@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         Button remove = (Button) findViewById(R.id.remove);
 
         final TextView counter = (TextView) findViewById(R.id.stackSizeLabel);
-        counter.setText("Stack size = " + stackSize);
         stackSize = stack.getStackSize();
+        counter.setText("Stack size = " + stackSize);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

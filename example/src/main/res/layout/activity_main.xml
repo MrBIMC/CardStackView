@@ -12,13 +12,15 @@
     <com.pavelsikun.cardstackview.CardStackView
         android:id="@+id/stack"
         android:layout_width="220dp"
-        android:layout_height="130dp"
-        stack:stackSize="3"
+        android:layout_height="125dp"
+        stack:stackSize="5"
+        stack:stackDirection="up"
         android:layout_centerInParent="true">
         <TextView
             android:layout_width="220dp"
             android:layout_height="100dp"
             android:background="@drawable/card"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="YOUR CARD"/>
     </com.pavelsikun.cardstackview.CardStackView>

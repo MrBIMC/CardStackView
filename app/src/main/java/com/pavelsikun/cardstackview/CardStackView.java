@@ -11,8 +11,8 @@ import android.widget.FrameLayout;
  */
 public class CardStackView extends FrameLayout {
 
-    private static final int DIRECTION_DOWN = 0;
-    private static final int DIRECTION_UP = 0;
+    public static final int DIRECTION_DOWN = 0;
+    public static final int DIRECTION_UP = 1;
 
     private static final int DEFAULT_STACK_SIZE = 0;
     private static final int DEFAULT_STACK_DIRECTION = DIRECTION_DOWN;
@@ -40,12 +40,7 @@ public class CardStackView extends FrameLayout {
 
     private void init(AttributeSet attrs) {
         setValuesFromXml(attrs);
-        if(mDirection == DIRECTION_DOWN) {
-            setBackgroundResource(R.drawable.stack);
-        }
-        else {
-            setBackgroundResource(R.drawable.stack); //todo make upstack!!
-        }
+        setStackDirection(mDirection);
         background = (LayerDrawable) getBackground();
         setStackSize(mStackSize);
     }
@@ -58,7 +53,7 @@ public class CardStackView extends FrameLayout {
         } else {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.StackView);
             try {
-//                mDirection = a.getInt(R.styleable.StackView_stackSize, DEFAULT_STACK_DIRECTION);
+                mDirection = a.getInt(R.styleable.StackView_stackDirection, DEFAULT_STACK_DIRECTION);
                 mStackSize = a.getInt(R.styleable.StackView_stackSize, DEFAULT_STACK_SIZE);
             } finally {
                 a.recycle();
@@ -78,5 +73,15 @@ public class CardStackView extends FrameLayout {
 
     public int getStackSize() {
         return mStackSize;
+    }
+
+    public void setStackDirection(int direction) {
+        if(direction == DIRECTION_UP) {
+            setBackgroundResource(R.drawable.stack_up);
+        }
+        else {
+            setStackSize(R.drawable.stack);
+        }
+        invalidate();
     }
 }
