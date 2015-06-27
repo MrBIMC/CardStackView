@@ -12,15 +12,14 @@
     <com.pavelsikun.cardstackview.CardStackView
         android:id="@+id/stack"
         android:layout_width="220dp"
-        android:layout_height="125dp"
+        android:layout_height="130dp"
         stack:stackSize="5"
-        stack:stackDirection="up"
+        stack:stackDirection="down"
         android:layout_centerInParent="true">
         <TextView
             android:layout_width="220dp"
             android:layout_height="100dp"
             android:background="@drawable/card"
-            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="YOUR CARD"/>
     </com.pavelsikun.cardstackview.CardStackView>
@@ -34,6 +33,7 @@
         android:textSize="22sp"/>
 
     <LinearLayout
+        android:id="@+id/holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -52,5 +52,12 @@
             android:layout_height="wrap_content"
             android:text="-1"/>
     </LinearLayout>
+
+    <Button
+        android:layout_below="@id/holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/direction"
+        android:text="change stack direction"/>
 
 </RelativeLayout>

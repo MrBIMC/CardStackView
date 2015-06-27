@@ -13,6 +13,7 @@ import com.pavelsikun.cardstackview.CardStackView;
 
 public class MainActivity extends AppCompatActivity {
 
+    Boolean flag = false;
     int stackSize;
 
     @Override
@@ -51,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
                 }
                 stack.setStackSize(stackSize);
                 counter.setText("Stack size = " + stackSize);
+            }
+        });
+
+
+        Button direction = (Button) findViewById(R.id.direction);
+        direction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!flag){
+                    stack.setStackDirection(CardStackView.DIRECTION_UP);
+                    flag = !flag;
+                }
+                if(flag) {
+                    stack.setStackDirection(CardStackView.DIRECTION_DOWN);
+                    flag = !flag;
+                }
             }
         });
     }
