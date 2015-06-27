@@ -80,7 +80,7 @@ public class CardStackView extends FrameLayout {
             setBackgroundResource(R.drawable.stack_up);
         }
         else {
-            setStackSize(R.drawable.stack);
+            setBackgroundResource(R.drawable.stack);
         }
         invalidate();
     }
