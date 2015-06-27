@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="StackView">
+        <attr name="stackSize" format="reference|integer"/>
+        <!--<attr name="stackDirection" format="reference"/>-->
+    </declare-styleable>
+</resources>
