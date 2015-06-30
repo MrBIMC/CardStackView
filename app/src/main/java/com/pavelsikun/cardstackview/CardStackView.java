@@ -3,7 +3,6 @@ package com.pavelsikun.cardstackview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.RotateDrawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -80,7 +79,7 @@ public class CardStackView extends FrameLayout {
     public void setStackDirection(int direction) {
         mDirection = direction;
         if(mDirection == DIRECTION_UP) setBackgroundResource(R.drawable.stack_up);
-        else if(mDirection == DIRECTION_DOWN) setBackgroundResource(R.drawable.stack);
+        else if(mDirection == DIRECTION_DOWN) setBackgroundResource(R.drawable.stack_down);
         mBackground = (LayerDrawable) getBackground();
         setChildGravity();
         setStackSize(mStackSize);

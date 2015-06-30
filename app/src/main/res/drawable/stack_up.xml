@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="0dp">
+    <item android:top="0dp"
+        android:bottom="6dp">
         <shape>
             <solid android:color="@color/card_default" />
             <stroke
@@ -9,7 +10,8 @@
             <corners android:radius="6dp"/>
         </shape>
     </item>
-    <item android:top="6dp">
+    <item android:top="6dp"
+        android:bottom="6dp">
         <shape>
             <solid android:color="@color/card_default" />
             <stroke
@@ -18,7 +20,8 @@
             <corners android:radius="6dp"/>
         </shape>
     </item>
-    <item android:top="12dp">
+    <item android:top="12dp"
+        android:bottom="6dp">
         <shape>
             <solid android:color="@color/card_default" />
             <stroke
@@ -27,7 +30,8 @@
             <corners android:radius="6dp"/>
         </shape>
     </item>
-    <item android:top="18dp">
+    <item android:top="18dp"
+        android:bottom="6dp">
         <shape>
             <solid android:color="@color/card_default" />
             <stroke
@@ -36,7 +40,8 @@
             <corners android:radius="6dp"/>
         </shape>
     </item>
-    <item android:top="24dp">
+    <item android:top="24dp"
+        android:bottom="6dp">
         <shape>
             <solid android:color="@color/card_default" />
             <stroke
