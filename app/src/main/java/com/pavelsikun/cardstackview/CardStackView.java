@@ -2,21 +2,16 @@ package com.pavelsikun.cardstackview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RotateDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 /**
  * Created by mrbimc on 25.06.15.
  */
 public class CardStackView extends FrameLayout {
-
-    public static final String LOG_TAG = "TEMPTEMPLOGLOG";
 
     public static final int DIRECTION_DOWN = 0;
     public static final int DIRECTION_UP = 1;
@@ -28,7 +23,6 @@ public class CardStackView extends FrameLayout {
     private int mStackSize = 0;
 
     private LayerDrawable mBackground;
-
 
     public CardStackView(Context context) {
         super(context);
@@ -49,7 +43,6 @@ public class CardStackView extends FrameLayout {
         setValuesFromXml(attrs);
         setStackDirection(mDirection);
     }
-
 
     private void setValuesFromXml(AttributeSet attrs) {
         if(attrs == null) {
@@ -80,26 +73,25 @@ public class CardStackView extends FrameLayout {
         return mStackSize;
     }
 
+    public int getStackDirection() {
+        return mDirection;
+    }
+
     public void setStackDirection(int direction) {
         mDirection = direction;
-
         if(mDirection == DIRECTION_UP) setBackgroundResource(R.drawable.stack_up);
         else if(mDirection == DIRECTION_DOWN) setBackgroundResource(R.drawable.stack);
         mBackground = (LayerDrawable) getBackground();
         setChildGravity();
-
         setStackSize(mStackSize);
     }
 
-
     private void setChildGravity() {
-        if(getChildCount() > 0) { //  почему оно 0?? когда аттачится чайлд???
-            Log.d(LOG_TAG, "childrencount: " + getChildCount());
+        if(getChildCount() > 0) {
             if(mDirection == DIRECTION_UP)
                 ((FrameLayout.LayoutParams) getChildAt(0).getLayoutParams()).gravity = Gravity.BOTTOM;
             else if(mDirection == DIRECTION_DOWN)
                 ((FrameLayout.LayoutParams) getChildAt(0).getLayoutParams()).gravity = Gravity.TOP;
         }
-        else Log.d(LOG_TAG, "no children :(");
     }
 }

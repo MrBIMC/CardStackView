@@ -20,6 +20,7 @@
             android:layout_width="220dp"
             android:layout_height="100dp"
             android:background="@drawable/card"
+            android:layout_gravity="bottom"
             android:gravity="center"
             android:text="YOUR CARD"/>
     </com.pavelsikun.cardstackview.CardStackView>
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/stack"
         android:layout_centerHorizontal="true"
-        android:textSize="22sp"/>
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:id="@+id/holder"

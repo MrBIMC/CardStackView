@@ -13,32 +13,34 @@ import com.pavelsikun.cardstackview.CardStackView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Boolean flag = false;
     int stackSize;
+    TextView counter;
+    CardStackView stack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final CardStackView stack = (CardStackView)findViewById(R.id.stack);
+        stack = (CardStackView)findViewById(R.id.stack);
+        counter = (TextView) findViewById(R.id.stackSizeLabel);
+
         Button add = (Button) findViewById(R.id.add);
         Button remove = (Button) findViewById(R.id.remove);
 
-        final TextView counter = (TextView) findViewById(R.id.stackSizeLabel);
         stackSize = stack.getStackSize();
-        counter.setText("Stack size = " + stackSize);
+        updateTitle();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 stackSize++;
-                if(stackSize > 5) {
+                if (stackSize > 5) {
                     stackSize = 5;
                     Snackbar.make(findViewById(android.R.id.content), "5 is maximal possible value!", Snackbar.LENGTH_SHORT).show();
                 }
                 stack.setStackSize(stackSize);
-                counter.setText("Stack size = " + stackSize);
+                updateTitle();
             }
         });
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(android.R.id.content), "0 is minimal possible value!", Snackbar.LENGTH_SHORT).show();
                 }
                 stack.setStackSize(stackSize);
-                counter.setText("Stack size = " + stackSize);
+                updateTitle();
             }
         });
 
@@ -60,15 +62,17 @@ public class MainActivity extends AppCompatActivity {
         direction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!flag){
+                if(stack.getStackDirection() == CardStackView.DIRECTION_DOWN)
                     stack.setStackDirection(CardStackView.DIRECTION_UP);
-                    flag = !flag;
-                }
-                else {
+                else
                     stack.setStackDirection(CardStackView.DIRECTION_DOWN);
-                    flag = !flag;
-                }
+
+                updateTitle();
             }
         });
+    }
+
+    private void updateTitle() {
+        counter.setText("Stack size = " + stackSize + "\nStack direction = " + (stack.getStackDirection() == 1 ? "UP" : "DOWN"));
     }
 }
