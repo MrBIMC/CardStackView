@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     stack.setStackDirection(CardStackView.DIRECTION_UP);
                     flag = !flag;
                 }
-                if(flag) {
+                else {
                     stack.setStackDirection(CardStackView.DIRECTION_DOWN);
                     flag = !flag;
                 }

@@ -2,14 +2,21 @@ package com.pavelsikun.cardstackview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.drawable.LayerDrawable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 /**
  * Created by mrbimc on 25.06.15.
  */
 public class CardStackView extends FrameLayout {
+
+    public static final String LOG_TAG = "TEMPTEMPLOGLOG";
 
     public static final int DIRECTION_DOWN = 0;
     public static final int DIRECTION_UP = 1;
@@ -20,7 +27,7 @@ public class CardStackView extends FrameLayout {
     private int mDirection = DIRECTION_DOWN;
     private int mStackSize = 0;
 
-    private LayerDrawable background;
+    private LayerDrawable mBackground;
 
 
     public CardStackView(Context context) {
@@ -41,8 +48,6 @@ public class CardStackView extends FrameLayout {
     private void init(AttributeSet attrs) {
         setValuesFromXml(attrs);
         setStackDirection(mDirection);
-        background = (LayerDrawable) getBackground();
-        setStackSize(mStackSize);
     }
 
 
@@ -66,8 +71,8 @@ public class CardStackView extends FrameLayout {
         if(size > 5) mStackSize = 5;
         else if(size < 0) mStackSize = 0;
 
-        for(int i = 0; i < 5; i++) background.getDrawable(i).setAlpha(255);
-        for(int i = 4 - mStackSize; i != -1; i-- ) background.getDrawable(i).setAlpha(0);
+        for(int i = 0; i < 5; i++) mBackground.getDrawable(i).setAlpha(255);
+        for(int i = 4 - mStackSize; i != -1; i-- ) mBackground.getDrawable(i).setAlpha(0);
         invalidate();
     }
 
@@ -76,12 +81,25 @@ public class CardStackView extends FrameLayout {
     }
 
     public void setStackDirection(int direction) {
-        if(direction == DIRECTION_UP) {
-            setBackgroundResource(R.drawable.stack_up);
+        mDirection = direction;
+
+        if(mDirection == DIRECTION_UP) setBackgroundResource(R.drawable.stack_up);
+        else if(mDirection == DIRECTION_DOWN) setBackgroundResource(R.drawable.stack);
+        mBackground = (LayerDrawable) getBackground();
+        setChildGravity();
+
+        setStackSize(mStackSize);
+    }
+
+
+    private void setChildGravity() {
+        if(getChildCount() > 0) { //  почему оно 0?? когда аттачится чайлд???
+            Log.d(LOG_TAG, "childrencount: " + getChildCount());
+            if(mDirection == DIRECTION_UP)
+                ((FrameLayout.LayoutParams) getChildAt(0).getLayoutParams()).gravity = Gravity.BOTTOM;
+            else if(mDirection == DIRECTION_DOWN)
+                ((FrameLayout.LayoutParams) getChildAt(0).getLayoutParams()).gravity = Gravity.TOP;
         }
-        else {
-            setBackgroundResource(R.drawable.stack);
-        }
-        invalidate();
+        else Log.d(LOG_TAG, "no children :(");
     }
 }

@@ -14,7 +14,7 @@
         android:layout_width="220dp"
         android:layout_height="130dp"
         stack:stackSize="5"
-        stack:stackDirection="down"
+        stack:stackDirection="up"
         android:layout_centerInParent="true">
         <TextView
             android:layout_width="220dp"
