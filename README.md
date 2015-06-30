@@ -1,5 +1,5 @@
 # CardStackView
-Pretty useless trick to emulate "Card Stack effect". Support custom stack size(0..5) and 2 stack direction(Down, Up). 
+Samall trick to emulate "Card Stack effect". Support custom stack size(0..5) and 2 stack direction(Down, Up). 
 Both can be changed at runtime.
 
 ##How to use:
